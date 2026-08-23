@@ -4,10 +4,18 @@
   "private": true,
   "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "preinstall": "npx only-allow pnpm",
+    "start": "pnpm --filter @openpiano/web start",
+    "dev": "pnpm --filter @openpiano/web dev",
+    "build": "pnpm --filter @openpiano/web build",
+    "serve": "pnpm --filter @openpiano/web serve",
+    "lint": "pnpm --filter @openpiano/web lint",
+    "typecheck": "pnpm --filter @openpiano/web typecheck",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
   },
   "devDependencies": {
-    "prettier": "^3.9.6"
+    "oxfmt": "^0.64.0"
   }
 }
