@@ -1,3 +1,4 @@
+import { Button } from "@kobalte/core/button";
 import { For } from "solid-js";
 import { createMidi } from "./create-midi";
 import { midiNoteName } from "./midi-note";
@@ -23,7 +24,7 @@ export function MidiPage() {
           status={midi.status()}
           deviceCount={midi.devices().length}
         />
-        <button
+        <Button
           class="device-check"
           type="button"
           disabled={
@@ -35,7 +36,7 @@ export function MidiPage() {
           {midi.status() === MIDI_STATUS.PENDING
             ? "Checking…"
             : "Check devices"}
-        </button>
+        </Button>
       </div>
 
       <div class="panels">

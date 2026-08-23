@@ -6,6 +6,10 @@ minimumReleaseAgeExclude:
 peerDependencyRules:
   allowedVersions:
     "@typescript-eslint/project-service@8.67.0>typescript": "7"
+    "@kobalte/core@2.0.0-alpha.0>@solidjs/web": "2.0.0-rc.1"
+    "@kobalte/core@2.0.0-alpha.0>solid-js": "2.0.0-rc.1"
+    "@kobalte/utils@2.0.0-alpha.0>@solidjs/web": "2.0.0-rc.1"
+    "@kobalte/utils@2.0.0-alpha.0>solid-js": "2.0.0-rc.1"
     "@typescript-eslint/tsconfig-utils@8.67.0>typescript": "7"
     "@typescript-eslint/typescript-estree@8.67.0>typescript": "7"
     "@typescript-eslint/utils@8.67.0>typescript": "7"
