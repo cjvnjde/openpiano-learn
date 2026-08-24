@@ -6,29 +6,30 @@
   padding-top: 1rem;
 }
 
-.tool-navigation__button {
+.tool-navigation__link {
   padding: 0.6rem 0.8rem;
   border: 1px solid transparent;
   border-radius: 0.6rem;
   color: #6a665e;
   background: transparent;
   font: inherit;
+  text-decoration: none;
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
 }
 
-.tool-navigation__button:hover {
+.tool-navigation__link:hover {
   color: #29322e;
   background: rgb(255 255 255 / 55%);
 }
 
-.tool-navigation__button:focus-visible {
+.tool-navigation__link:focus-visible {
   outline: 0.2rem solid rgb(33 130 92 / 30%);
   outline-offset: 0.1rem;
 }
 
-.tool-navigation__button--active {
+.tool-navigation__link--active {
   border-color: #d8d2c5;
   color: #1f6049;
   background: #fffdf9;
@@ -41,7 +42,7 @@
     overflow-x: auto;
   }
 
-  .tool-navigation__button {
+  .tool-navigation__link {
     white-space: nowrap;
   }
 }

@@ -1,5 +1,8 @@
 import { Application } from "./app/application";
+import { Router } from "./app/router";
 
 export default function App() {
-  return <Application />;
+  return (
+    <Router>{(props) => <Application>{props.children}</Application>}</Router>
+  );
 }

@@ -1,56 +1,40 @@
-import { Show, createSignal } from "solid-js";
-import { MidiPage } from "../modules/midi";
-import { SongImportPage } from "../modules/song-import";
+import type { ParentProps } from "solid-js";
+import { useLocation } from "@solidjs/router";
+import { Router } from "./router";
 import "./application.css";
 
-const APPLICATION_PAGE = {
-  IMPORT: "import",
-  MIDI: "midi",
-} as const;
-
-type ApplicationPage = (typeof APPLICATION_PAGE)[keyof typeof APPLICATION_PAGE];
-
-export function Application() {
-  const [page, setPage] = createSignal<ApplicationPage>(
-    APPLICATION_PAGE.IMPORT,
-  );
+export function Application(props: ParentProps) {
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <>
       <nav class="tool-navigation" aria-label="Development pages">
-        <button
+        <a
           class={
-            page() === APPLICATION_PAGE.IMPORT
-              ? "tool-navigation__button tool-navigation__button--active"
-              : "tool-navigation__button"
+            isActive(Router.paths())
+              ? "tool-navigation__link tool-navigation__link--active"
+              : "tool-navigation__link"
           }
-          type="button"
-          aria-pressed={page() === APPLICATION_PAGE.IMPORT ? "true" : "false"}
-          onClick={() => {
-            setPage(APPLICATION_PAGE.IMPORT);
-          }}
+          href={Router.paths()}
+          aria-current={isActive(Router.paths()) ? "page" : undefined}
         >
           MusicXML import
-        </button>
-        <button
+        </a>
+        <a
           class={
-            page() === APPLICATION_PAGE.MIDI
-              ? "tool-navigation__button tool-navigation__button--active"
-              : "tool-navigation__button"
+            isActive(Router.paths.midi())
+              ? "tool-navigation__link tool-navigation__link--active"
+              : "tool-navigation__link"
           }
-          type="button"
-          aria-pressed={page() === APPLICATION_PAGE.MIDI ? "true" : "false"}
-          onClick={() => {
-            setPage(APPLICATION_PAGE.MIDI);
-          }}
+          href={Router.paths.midi()}
+          aria-current={isActive(Router.paths.midi()) ? "page" : undefined}
         >
           MIDI input
-        </button>
+        </a>
       </nav>
 
-      <Show when={page() === APPLICATION_PAGE.IMPORT} fallback={<MidiPage />}>
-        <SongImportPage />
-      </Show>
+      {props.children}
     </>
   );
 }
