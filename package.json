@@ -9,9 +9,10 @@
     "dev": "pnpm --filter @openpiano/web dev",
     "build": "pnpm --filter @openpiano/web build",
     "serve": "pnpm --filter @openpiano/web serve",
-    "lint": "pnpm --filter @openpiano/web lint",
-    "typecheck": "pnpm --filter @openpiano/web typecheck",
-    "check": "pnpm typecheck && pnpm lint && pnpm format:check",
+    "lint": "pnpm --recursive --if-present lint",
+    "test": "pnpm --recursive --if-present test",
+    "typecheck": "pnpm --recursive --if-present typecheck",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm format:check",
     "format": "oxfmt",
     "format:check": "oxfmt --check"
   },

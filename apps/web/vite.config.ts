@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import solid from "@solidjs/vite-plugin";
 
 export default defineConfig({
@@ -9,6 +9,9 @@ export default defineConfig({
   plugins: [
     solid({ start: true }), // add `ssr: true` for streaming SSR
   ],
+  test: {
+    environment: "node",
+  },
   server: {
     port: 3000,
   },

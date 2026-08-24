@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "lint": "oxlint -c oxlint.config.mjs src",
+    "lint": "oxlint -c oxlint.config.mjs src tests",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "license": "MIT",
@@ -17,11 +18,13 @@
     "eslint-plugin-solid": "~0.16.0",
     "oxlint": "~1.79.0",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   },
   "dependencies": {
     "@kobalte/core": "2.0.0-alpha.0",
     "@solidjs/web": "^2.0.0-rc.1",
+    "fast-xml-parser": "^5.11.0",
     "solid-js": "^2.0.0-rc.1"
   }
 }
