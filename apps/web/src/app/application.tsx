@@ -1,6 +1,6 @@
 import type { ParentProps } from "solid-js";
 import { useLocation } from "@solidjs/router";
-import { Router } from "./router";
+import { ROUTE_PATHS, Router } from "./router";
 import "./application.css";
 
 export function Application(props: ParentProps) {
@@ -12,23 +12,23 @@ export function Application(props: ParentProps) {
       <nav class="tool-navigation" aria-label="Development pages">
         <a
           class={
-            isActive(Router.paths())
+            isActive(ROUTE_PATHS.songImport)
               ? "tool-navigation__link tool-navigation__link--active"
               : "tool-navigation__link"
           }
           href={Router.paths()}
-          aria-current={isActive(Router.paths()) ? "page" : undefined}
+          aria-current={isActive(ROUTE_PATHS.songImport) ? "page" : undefined}
         >
           MusicXML import
         </a>
         <a
           class={
-            isActive(Router.paths.midi())
+            isActive(ROUTE_PATHS.midi)
               ? "tool-navigation__link tool-navigation__link--active"
               : "tool-navigation__link"
           }
           href={Router.paths.midi()}
-          aria-current={isActive(Router.paths.midi()) ? "page" : undefined}
+          aria-current={isActive(ROUTE_PATHS.midi) ? "page" : undefined}
         >
           MIDI input
         </a>

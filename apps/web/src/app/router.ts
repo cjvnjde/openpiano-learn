@@ -1,10 +1,17 @@
-import { createRouter } from "@solidjs/router";
+import { createRouter, hashHistory } from "@solidjs/router";
 import { MidiPage } from "../modules/midi";
 import { SongImportPage } from "../modules/song-import";
 
+export const ROUTE_PATHS = {
+  songImport: "/",
+  midi: "/midi",
+} as const;
+
 export const Router = createRouter({
+  explicitLinks: true,
+  history: hashHistory(),
   routes: [
-    { path: "/", component: SongImportPage },
-    { path: "/midi", component: MidiPage },
+    { path: ROUTE_PATHS.songImport, component: SongImportPage },
+    { path: ROUTE_PATHS.midi, component: MidiPage },
   ],
 });
