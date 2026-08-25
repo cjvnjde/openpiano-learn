@@ -23,6 +23,19 @@ export function Application(props: ParentProps) {
         </a>
         <a
           class={
+            isActive(ROUTE_PATHS.sheetRenderer)
+              ? "tool-navigation__link tool-navigation__link--active"
+              : "tool-navigation__link"
+          }
+          href={Router.paths["sheet-renderer"]()}
+          aria-current={
+            isActive(ROUTE_PATHS.sheetRenderer) ? "page" : undefined
+          }
+        >
+          Sheet renderer
+        </a>
+        <a
+          class={
             isActive(ROUTE_PATHS.midi)
               ? "tool-navigation__link tool-navigation__link--active"
               : "tool-navigation__link"

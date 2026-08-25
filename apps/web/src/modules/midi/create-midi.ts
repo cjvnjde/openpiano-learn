@@ -52,7 +52,9 @@ export function createMidi() {
   };
 
   const checkDevices = () => {
-    void runDeviceCheck();
+    runDeviceCheck().catch((error: unknown) => {
+      reportError(error);
+    });
   };
 
   onSettled(() => {
