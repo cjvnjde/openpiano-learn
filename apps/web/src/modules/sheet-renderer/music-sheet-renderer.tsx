@@ -3,12 +3,14 @@ import {
   RENDER_STATUS,
   renderMusicSheet,
   type RenderState,
+  type SheetLayout,
 } from "./render-music-sheet";
 
 const UNAVAILABLE_CONTAINER_MESSAGE = "Renderer container is unavailable";
 
 type MusicSheetRendererProps = {
   file: File;
+  layout: SheetLayout;
 };
 
 export const MusicSheetRenderer = (props: MusicSheetRendererProps) => {
@@ -28,7 +30,7 @@ export const MusicSheetRenderer = (props: MusicSheetRendererProps) => {
       return;
     }
 
-    return renderMusicSheet(target, props.file, setState);
+    return renderMusicSheet(target, props.file, props.layout, setState);
   });
 
   const renderError = () => {
@@ -50,7 +52,14 @@ export const MusicSheetRenderer = (props: MusicSheetRendererProps) => {
   };
 
   return (
-    <section class="sheet-display" aria-labelledby="sheet-display-heading">
+    <section
+      class={
+        props.layout === "single-line"
+          ? "sheet-display sheet-display--single-line"
+          : "sheet-display"
+      }
+      aria-labelledby="sheet-display-heading"
+    >
       <div class="sheet-display__heading">
         <div>
           <p class="label">OpenSheetMusicDisplay</p>

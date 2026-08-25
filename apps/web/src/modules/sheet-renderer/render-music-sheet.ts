@@ -6,6 +6,8 @@ export const RENDER_STATUS = {
   RENDERING: "rendering",
 } as const;
 
+export type SheetLayout = "responsive" | "single-line";
+
 export type RenderState =
   | { status: typeof RENDER_STATUS.RENDERING }
   | { status: typeof RENDER_STATUS.READY }
@@ -22,6 +24,7 @@ function errorMessage(cause: unknown) {
 export function renderMusicSheet(
   container: HTMLDivElement,
   file: File,
+  layout: SheetLayout,
   updateState: UpdateRenderState,
 ) {
   const abortController = new AbortController();
@@ -32,6 +35,7 @@ export function renderMusicSheet(
     drawingParameters: "compacttight",
     drawTitle: true,
     pageFormat: "Endless",
+    renderSingleHorizontalStaffline: layout === "single-line",
   });
   const loadAndRender = async () => {
     await renderer.load(file, file.name);

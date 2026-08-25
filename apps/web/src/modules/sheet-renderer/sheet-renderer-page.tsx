@@ -1,21 +1,32 @@
 import { Show, createSignal } from "solid-js";
 import { MusicSheetRenderer } from "./music-sheet-renderer";
+import type { SheetLayout } from "./render-music-sheet";
 import "./sheet-renderer-page.css";
 
-export function SheetRendererPage() {
+type SheetRendererPageContentProps = {
+  eyebrow: string;
+  intro: string;
+  layout: SheetLayout;
+  title: string;
+};
+
+const SheetRendererPageContent = (props: SheetRendererPageContentProps) => {
   const [selectedFile, setSelectedFile] = createSignal<File>();
 
   const pickerHint = () => selectedFile()?.name ?? "Nothing is selected";
 
   return (
-    <main class="sheet-renderer-page">
+    <main
+      class={
+        props.layout === "single-line"
+          ? "sheet-renderer-page sheet-renderer-page--single-line"
+          : "sheet-renderer-page"
+      }
+    >
       <header class="sheet-renderer-hero">
-        <p class="eyebrow">OpenPiano · Sheet renderer</p>
-        <h1>Render MusicXML notation</h1>
-        <p class="intro">
-          Choose a MusicXML score and inspect the engraved notation produced by
-          OpenSheetMusicDisplay. The file stays in this browser.
-        </p>
+        <p class="eyebrow">{props.eyebrow}</p>
+        <h1>{props.title}</h1>
+        <p class="intro">{props.intro}</p>
       </header>
 
       <section
@@ -52,8 +63,26 @@ export function SheetRendererPage() {
       </section>
 
       <Show keyed when={selectedFile()}>
-        {(file) => <MusicSheetRenderer file={file} />}
+        {(file) => <MusicSheetRenderer file={file} layout={props.layout} />}
       </Show>
     </main>
   );
-}
+};
+
+export const SheetRendererPage = () => (
+  <SheetRendererPageContent
+    eyebrow="OpenPiano · Sheet renderer"
+    title="Render MusicXML notation"
+    intro="Choose a MusicXML score and inspect the engraved notation produced by OpenSheetMusicDisplay. The file stays in this browser."
+    layout="responsive"
+  />
+);
+
+export const HorizontalSheetPage = () => (
+  <SheetRendererPageContent
+    eyebrow="OpenPiano · Horizontal sheet"
+    title="Render one continuous sheet"
+    intro="Choose a MusicXML score and scroll through its notation as one continuous horizontal system. The file stays in this browser."
+    layout="single-line"
+  />
+);

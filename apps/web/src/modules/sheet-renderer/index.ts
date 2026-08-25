@@ -1,1 +1,1 @@
-export { SheetRendererPage } from "./sheet-renderer-page";
+export { HorizontalSheetPage, SheetRendererPage } from "./sheet-renderer-page";

@@ -4,6 +4,11 @@
   padding: clamp(2rem, 6vw, 4.5rem) 0 6rem;
 }
 
+.sheet-renderer-page--single-line {
+  width: calc(100% - 2rem);
+  max-width: 100rem;
+}
+
 .sheet-renderer-hero {
   max-width: 46rem;
   margin-bottom: 2rem;
@@ -155,6 +160,10 @@
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.sheet-display--single-line .sheet-display__canvas svg {
+  max-width: none;
 }
 
 @media (max-width: 50rem) {

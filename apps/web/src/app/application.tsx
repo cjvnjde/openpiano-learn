@@ -36,6 +36,19 @@ export function Application(props: ParentProps) {
         </a>
         <a
           class={
+            isActive(ROUTE_PATHS.horizontalSheet)
+              ? "tool-navigation__link tool-navigation__link--active"
+              : "tool-navigation__link"
+          }
+          href={Router.paths["horizontal-sheet"]()}
+          aria-current={
+            isActive(ROUTE_PATHS.horizontalSheet) ? "page" : undefined
+          }
+        >
+          Horizontal sheet
+        </a>
+        <a
+          class={
             isActive(ROUTE_PATHS.midi)
               ? "tool-navigation__link tool-navigation__link--active"
               : "tool-navigation__link"
